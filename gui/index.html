@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<meta charset='UTF-8'>
+		<title>Adventus RPG</title>
+		<link rel='stylesheet' href='style.css'>
+		<script type='text/javascript' src='nui://game/ui/jquery.js'></script>
+		<script type='text/javascript' src='listener.js'></script>
+	</head>
+	<body>
+		<div id='chat' style='opacity: 0.0;'>
+			<div id='chat_space'></div>
+			<input type='text' id='chat_input' maxlength='64' spellcheck='false' onfocus='chatFocus = true;' onblur='chatFocus = false;'>
+		</div>
+		<div id='box' style='display: none;'>
+			<div id='box_title'></div>
+			<div id='box_message'></div>
+			<input type='text' id='box_input' style='display: none;'>
+			<button id='box_submit' onclick='_boxSubmit();'></button>
+			<button id='box_cancel' onclick='_boxCancel();'></button>
+		</div>
+	</body>
+</html>
