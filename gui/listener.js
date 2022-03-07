@@ -102,15 +102,16 @@ function addChat(author, color, text) {
 	if (chat_typping == false) {
 		chat.style.animation = 'FadeIn 1s forwards';
 
-		if (chat_timer) { clearTimeout(chat_timer); }
-
+		if (chat_timer) {
+			clearTimeout(chat_timer);
+		}
 		chat_timer = setTimeout(function() {
 			if (chat_typping == false && chat.style.opacity < 1.0) {
 				chat.style.animation = 'FadeOut 1s forwards';
 			}
 		}, 7000);
 	}
-	chat_space.innerHTML += "<span style='color: #" + color.toString(16) + "'>" + (author ? (author + " diz: " + text) : text) + "</span><br>";
+	chat_space.innerHTML += "<span style='color: #" + ((typeof color != 'string') ? color.toString(16) : color.replace('0x', '')) + "'>" + (author ? (author + " diz: " + text) : text) + "</span><br>";
 	chat_space.scrollTop = chat_space.scrollHeight;
 }
 
@@ -118,15 +119,16 @@ function clearChat() {
 	if (chat_typping == false) {
 		chat.style.animation = 'FadeIn 1s forwards';
 
-		if (chat_timer) { clearTimeout(chat_timer); }
-
+		if (chat_timer) {
+			clearTimeout(chat_timer);
+		}
 		chat_timer = setTimeout(function() {
 			if (chat_typping == false && chat.style.opacity < 1.0) {
 				chat.style.animation = 'FadeOut 1s forwards';
 			}
 		}, 7000);
 	}
-	chat_space.innerHTML = "<span style='color: #B2B2B2'>Seu chat foi limpo com sucesso!</span><br>";
+	chat_space.innerHTML = "<span style='color: #BEBEBE'>Seu chat foi limpo com sucesso!</span><br>";
 }
 
 function closeChat(time) {
