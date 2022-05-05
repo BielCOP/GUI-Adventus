@@ -12,12 +12,15 @@
 
 #chat {
 	background: rgba(205, 205, 205, 0.1);
-	width: 34%;
-	height: 37.8%;
+	width: 35%;
+	height: 35.8%;
 	margin: 40px 10px;
 }
 #chat_space {
-	background: rgba(240, 240, 240, 0.3);
+	background:
+	linear-gradient(-45deg, transparent 10%, rgba(240, 240, 240, 0.0) 75%),
+	linear-gradient( 45deg, transparent 10%, rgba(240, 240, 240, 0.0) 75%);
+  	background-repeat: repeat-x;
 	width: 99%;
 	height: 90%;
 	position: relative;
@@ -30,10 +33,12 @@
 	padding: 2px;
 	font-weight: 400;
 	text-align: justify;
+	/* -webkit-text-stroke: thin; */
 }
 #chat_input {
 	color: rgba(240, 240, 240, 1.0);
-	background: rgba(47, 96, 246, 0.4);
+	background: rgba(60, 60, 60, 0.5);
+	font-style: oblique;
 	width: 99%;
 	height: 8%;
 	margin-top: 0.666%;
@@ -45,14 +50,18 @@
 /* Box */
 
 #box {
-	background: rgba(240, 240, 240, 0.9);
+	background: rgba(240, 240, 240, 0.7);
 	max-width: 25%;
 	max-height: 40%;
-	margin: -6% auto;
+	margin: auto;
+	position: relative;
+	top: -5%;
 }
 #box_title {
+	color: rgba(240, 240, 240, 1.0);
 	background: rgba(60, 60, 60, 0.8);
 	font-size: 24px;
+	font-style: oblique;
 	height: 5%;
 	text-indent: 5px;
 	line-height: 45px;

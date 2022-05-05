@@ -28,7 +28,6 @@ window.addEventListener('message', (event) => {
 		box_key = data.key;
 	}
 });
-
 window.addEventListener('keyup', function(event) {
 	var which = event.which;
 
@@ -65,7 +64,6 @@ window.addEventListener('keyup', function(event) {
 		}
 	}
 });
-
 // Funções (Chat)
 
 function openChat(time) {
@@ -74,30 +72,17 @@ function openChat(time) {
 
 	chat_typping = true;
 }
-
 function sendChat(text) {
 	$.post('http://servidor/chat:send', JSON.stringify({
 		text: text
 	}));
 
 	chat_messages[chat_message_idx] = text;
-
-	if (chat_message_idx > 19) {
-		chat_messages[(chat_message_idx - 20)] = '';
-
-		if (chat_message_idx > 39) {
-			for (var i = 0; i < 20; ++i) {
-				chat_messages[i] = chat_messages[(i + 20)];
-				chat_messages[(i + 20)] = null;
-			}
-		}
-	}
 	chat_message_idx = (chat_message_idx + 1);
 	chat_idx_message = chat_message_idx;
 
 	chat_input.value = '';
 }
-
 function addChat(author, color, text) {
 	if (chat_typping == false) {
 		chat.style.animation = 'FadeIn 1s forwards';
@@ -114,7 +99,6 @@ function addChat(author, color, text) {
 	chat_space.innerHTML += "<span style='color: #" + ((typeof color != 'string') ? color.toString(16) : color.replace('0x', '')) + "'>" + (author ? (author + " diz: " + text) : text) + "</span><br>";
 	chat_space.scrollTop = chat_space.scrollHeight;
 }
-
 function clearChat() {
 	if (chat_typping == false) {
 		chat.style.animation = 'FadeIn 1s forwards';
@@ -128,9 +112,14 @@ function clearChat() {
 			}
 		}, 7000);
 	}
-	chat_space.innerHTML = "<span style='color: #BEBEBE'>Seu chat foi limpo com sucesso!</span><br>";
-}
+	chat_space.innerHTML = "<span style='color: #CDCDCD'>Seu chat foi limpo com sucesso!</span><br>";
 
+	for (var i = 0; i < chat_message_idx; ++i) {
+		chat_messages[i] = null;
+	}
+	chat_message_idx = 0;
+	chat_idx_message = 0;
+}
 function closeChat(time) {
 	chat.style.animation = 'FadeOut ' + time + 'ms forwards';
 
@@ -141,7 +130,6 @@ function closeChat(time) {
 
 	$.post('http://servidor/chat:close', JSON.stringify({}));
 }
-
 // Funções (Box)
 
 function sendBox(title, message, input, submit, cancel) {
@@ -160,7 +148,6 @@ function sendBox(title, message, input, submit, cancel) {
 
 	box.style.display = 'block';
 }
-
 function _boxSubmit() {
 	if (box_key) {
 		if (box_input.style.display == 'block' && !box_input.value.trim()) {
@@ -175,7 +162,6 @@ function _boxSubmit() {
 	}
 	closeBox();
 }
-
 function _boxCancel() {
 	if (box_key) {
 		$.post('http://servidor/box:cancel', JSON.stringify({
@@ -186,7 +172,6 @@ function _boxCancel() {
 	}
 	closeBox();
 }
-
 function closeBox() {
 	box_title.innerText = '';
 	box_message.innerText = '';
